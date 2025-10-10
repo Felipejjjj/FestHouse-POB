@@ -29,7 +29,7 @@ public class Convidado {
 		//tostring
 		@Override
 		public String toString() {
-			return "id: " + this.id + " nome: " + this.nome + " senha: " + this.senha + " Evento: " + this.evento;
+			return "id: " + this.id + " nome: " + this.nome + " senha: " + this.senha + " Evento: " + this.evento.getNome();
 		}
 		//getters e setters
 		public int getId() {
@@ -56,5 +56,4 @@ public class Convidado {
 		public void setEvento(Evento evento) {
 			this.evento = evento;
 		}
-
 }
