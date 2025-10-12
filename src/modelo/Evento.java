@@ -59,6 +59,4 @@ public class Evento {
 		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente + ", listaConvidados="
 				+ listaConvidados + "]";
 	}
-	
-	
 }

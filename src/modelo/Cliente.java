@@ -48,5 +48,4 @@ public class Cliente {
 		public void removerEvento(Evento evento) {
 			this.eventos.remove(evento);
 		}
-
 }
