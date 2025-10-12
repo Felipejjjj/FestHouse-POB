@@ -1,6 +1,5 @@
 package repositorio;
 
-
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
@@ -9,7 +8,6 @@ import modelo.Cliente;
 import modelo.Convidado;
 import modelo.Localizacao;
 import modelo.Evento;
-
 
 public class Util {
 	private static ObjectContainer manager;
@@ -52,7 +50,5 @@ public class Util {
 			manager=null;
 		}
 	}
-	
-	
 }
 
