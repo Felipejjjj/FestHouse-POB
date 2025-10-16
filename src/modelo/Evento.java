@@ -14,6 +14,8 @@ public class Evento {
 		this.data = data;
 		this.nome = nome;
 		this.cliente = cliente;
+
+		cliente.adicionarEvento(this);
 	}
 
 	//getters e setters
@@ -56,7 +58,6 @@ public class Evento {
 	//toString
 	@Override
 	public String toString() {
-		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente + ", listaConvidados="
-				+ listaConvidados + "]";
+		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente + "]";
 	}
 }
