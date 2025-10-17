@@ -106,3 +106,19 @@ Fornece métodos estáticos para realizar operações de **persistência**, **re
 * `gravarObjeto(Object objeto)` — armazena o objeto no banco e confirma a operação.
 * `apagarObjeto(Object objeto)` — remove o objeto do banco e confirma a operação.
 * `<T> getObjetos(Class<T> classe)` — retorna uma lista de objetos do tipo especificado presentes no banco.
+
+## 🔢 `InstanciasConvidados`
+Classe responsável por **armazenar e controlar a quantidade de instâncias criadas de objetos do tipo `Convidado`**, permitindo implementar uma lógica de **ID sequencial e autoincremental**.
+
+### Atributos
+
+* `instancias`: número atual de instâncias de convidados registradas.
+
+### Construtor
+
+* `InstanciasConvidados(int instancias)` — inicializa o contador de instâncias com o valor informado.
+
+### Métodos
+
+* `getInstancias()` — retorna o número atual de instâncias armazenadas.
+* `acrescentarInstancia()` — incrementa o contador em 1, representando a criação de um novo convidado.

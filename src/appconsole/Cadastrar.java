@@ -27,12 +27,12 @@ public class Cadastrar {
 		Evento evento3 = new Evento("25/11/2025", "Visita à torre de Tokyo", cliente3);
 
 		//Convidados
-		Convidado convidado1 = new Convidado(1, "Melquisedeque", "1234", evento1);
-		Convidado convidado2 = new Convidado(2, "Milla", "3456", evento1);
-		Convidado convidado3 = new Convidado(3, "Felipe", "1122", evento2);
-		Convidado convidado4 = new Convidado(4, "Espingardina", "2211", evento2);
-		Convidado convidado5 = new Convidado(5, "Murilo", "4321", evento3);
-		Convidado convidado6 = new Convidado(6, "Joel", "6543", evento3);
+		Convidado convidado1 = new Convidado("Melquisedeque", "1234", evento1);
+		Convidado convidado2 = new Convidado("Milla", "3456", evento1);
+		Convidado convidado3 = new Convidado("Felipe", "1122", evento2);
+		Convidado convidado4 = new Convidado("Espingardina", "2211", evento2);
+		Convidado convidado5 = new Convidado("Murilo", "4321", evento3);
+		Convidado convidado6 = new Convidado("Joel", "6543", evento3);
 		
 		//gravando objetos no banco
 		Repositorio.gravarObjeto(evento1);
