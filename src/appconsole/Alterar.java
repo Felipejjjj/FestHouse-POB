@@ -1,10 +1,48 @@
 package appconsole;
 
+import java.util.List;
+
+import modelo.Convidado;
+import modelo.Evento;
+import repositorio.Repositorio;
+
 public class Alterar {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		 List<Evento> eventos = Repositorio.getObjetos(Evento.class);
+		 List<Convidado> convidados = Repositorio.getObjetos(Convidado.class);
+			
+		 Evento eventoEncontrado = null;
+		 for (Evento e : eventos) {
+		     if (e.getNome().equals("Rave")) {
+		         eventoEncontrado = e;
+		         break;
+		     }
+		 }
 
+		 System.out.println(
+		     eventoEncontrado != null
+		         ? "Evento encontrado: " + eventoEncontrado.getNome()
+		         : "Evento não encontrado"
+		 );
+		 
+		 Convidado convidadoParaRemover = null;
+		 for (Convidado c : convidados) {
+			 if (c.getNome().equals("Melquisedeque")) {
+				 convidadoParaRemover = c;
+				 break;
+			 }
+			 
+		 }
+		 if (convidadoParaRemover == null) {
+	            System.out.println("Convidado não encontrado no evento.");
+	        }
+		 //removendo convidado do evento
+		 eventoEncontrado.getListaConvidados().remove(convidadoParaRemover);
+		 
+		 //atualizando o evento no banco
+		 Repositorio.gravarObjeto(eventoEncontrado);
+	     System.out.println("Convidado " + convidadoParaRemover.getNome() + " removido do evento.");
 	}
 
 }

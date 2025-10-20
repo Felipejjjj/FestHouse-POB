@@ -24,7 +24,7 @@ public class Util {
 		
 		// habilitar cascata na alteração, remoção e leitura
 		config.common().objectClass(Cliente.class).cascadeOnUpdate(true);
-		config.common().objectClass(Cliente.class).cascadeOnDelete(false);
+		config.common().objectClass(Cliente.class).cascadeOnDelete(true);
 		config.common().objectClass(Cliente.class).cascadeOnActivate(true);
 		
 		config.common().objectClass(Evento.class).cascadeOnDelete(false);
