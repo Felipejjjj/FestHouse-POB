@@ -38,7 +38,7 @@ public class Alterar {
 	            System.out.println("Convidado não encontrado no evento.");
 	        }
 		 //removendo convidado do evento
-		 eventoEncontrado.getListaConvidados().remove(convidadoParaRemover);
+		 eventoEncontrado.removerConvidado(convidadoParaRemover);
 		 
 		 //atualizando o evento no banco
 		 Repositorio.gravarObjeto(eventoEncontrado);

@@ -74,10 +74,9 @@ Representa um convidado associado a um evento, contendo um identificador, nome e
 * `senha`: senha de acesso do convidado.
 * `evento`: evento ao qual o convidado está vinculado.
 
-### Construtores
+### Construtor
 
 * `Convidado(String nome, String senha, Evento evento)` — cria um convidado e o adiciona automaticamente ao evento informado.
-* `Convidado(int id, String nome, String senha, Evento evento)` — cria um convidado com ID definido manualmente (versão provisória até implementação do ID automático).
 
 # 💼 Classes Utilitárias
 

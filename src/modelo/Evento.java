@@ -2,6 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 
+import repositorio.Repositorio;
+
 public class Evento {
 	//atributos
 	private String data;
@@ -52,6 +54,9 @@ public class Evento {
 	}
 	
 	public void removerConvidado(Convidado convidado) {
+		convidado.setEvento(null);
+		Repositorio.gravarObjeto(convidado);
+		
 		this.listaConvidados.remove(convidado);
 	}
 

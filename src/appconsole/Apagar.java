@@ -8,7 +8,6 @@ import repositorio.Repositorio;
 public class Apagar {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		 List<Evento> eventos = Repositorio.getObjetos(Evento.class);
 		 //remover evento "Visita ao museu"
 		 for (Evento e : eventos) {

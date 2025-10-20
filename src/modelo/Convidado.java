@@ -24,7 +24,7 @@ public class Convidado {
 		@Override
 		public String toString() {
 			return "id: " + this.id + " nome: " + this.nome + " senha: " + this.senha + " Evento: " + (this.evento != null ? this.evento.getNome() : "sem evento");
-		}
+		}	
 		
 		//getters e setters
 		public int getId() {
