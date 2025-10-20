@@ -53,11 +53,9 @@ public class Evento {
 		this.listaConvidados.add(convidado);
 	}
 	
-	public void removerConvidado(Convidado convidado) {
-		convidado.setEvento(null);
-		Repositorio.gravarObjeto(convidado);
-		
+	public void removerConvidado(Convidado convidado) {		
 		this.listaConvidados.remove(convidado);
+		Repositorio.apagarObjeto(convidado);
 	}
 
 	//toString
