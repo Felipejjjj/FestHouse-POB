@@ -69,7 +69,7 @@ public class Consultar {
         }
         
         //criando a query para consulta
-        int N = 1;
+        int N = 2;
         Query queryEventosFiltro = manager.query();
         queryEventosFiltro.constrain(Evento.class);
         queryEventosFiltro.constrain(new Filtro(N)); // aplica o filtro

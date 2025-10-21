@@ -33,6 +33,8 @@ public class Cadastrar {
 		Convidado convidado4 = new Convidado("Espingardina", "2211", evento2);
 		Convidado convidado5 = new Convidado("Murilo", "4321", evento3);
 		Convidado convidado6 = new Convidado("Joel", "6543", evento3);
+		Convidado convidado7 = new Convidado("Isaac", "2323", evento3);
+		Convidado convidado8 = new Convidado("Arthur", "7777", evento3);
 		
 		//gravando objetos no banco
 		Repositorio.gravarObjeto(evento1);

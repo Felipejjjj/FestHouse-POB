@@ -1,7 +1,5 @@
 package modelo;
 
-import repositorio.Repositorio;
-
 public class Convidado {
 	//atributos
 		private int id;
@@ -11,13 +9,11 @@ public class Convidado {
 		
 		//construtor
 		public Convidado(String nome, String senha, Evento evento) {
-			this.id = Repositorio.getQtdInstanciasConvidados() + 1;
 			this.nome = nome;
 			this.senha = senha;
 			this.evento = evento;
 			
 			evento.adicionarConvidado(this);
-			Repositorio.incrementarQtdInstanciasConvidados();
 		}
 		
 		//tostring

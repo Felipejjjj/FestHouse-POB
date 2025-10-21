@@ -28,7 +28,7 @@ public class Alterar {
 		 
 		 Convidado convidadoParaRemover = null;
 		 for (Convidado c : convidados) {
-			 if (c.getNome().equals("Melquisedeque")) {
+			 if (c.getId() == 1) { //Convidado: Melquisedeque
 				 convidadoParaRemover = c;
 				 break;
 			 }
@@ -37,12 +37,14 @@ public class Alterar {
 		 if (convidadoParaRemover == null) {
 	            System.out.println("Convidado não encontrado no evento.");
 	        }
-		 //removendo convidado do evento
-		 eventoEncontrado.removerConvidado(convidadoParaRemover);
-		 
-		 //atualizando o evento no banco
-		 Repositorio.gravarObjeto(eventoEncontrado);
-	     System.out.println("Convidado " + convidadoParaRemover.getNome() + " removido do evento.");
+		else {
+			//removendo convidado do evento
+			eventoEncontrado.removerConvidado(convidadoParaRemover);
+
+			//atualizando o evento no banco
+			Repositorio.gravarObjeto(eventoEncontrado);
+			System.out.println("Convidado " + convidadoParaRemover.getNome() + " removido do evento.");
+		}
 	}
 
 }
