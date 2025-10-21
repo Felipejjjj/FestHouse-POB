@@ -1,9 +1,10 @@
 package appconsole;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
+import com.db4o.query.Candidate;
+import com.db4o.query.Evaluation;
 import com.db4o.query.Query;
 
 import modelo.Convidado;
@@ -15,6 +16,7 @@ public class Consultar {
     public static void main(String[] args) {
         ObjectContainer manager = Util.conectarBanco();
 
+        System.out.println("\n---Listar eventos da data X");
         // Qual o evento da data X
         String DataX = "10/10/2025";
         Query queryEvento = manager.query();
@@ -30,7 +32,8 @@ public class Consultar {
                 System.out.println(e);
             }
         }
-
+        
+        System.out.println("\n---Listar convidados do evento da data X");
         // Quais os convidados do evento da data X
         Query queryConvidados = manager.query();
         queryConvidados.constrain(Convidado.class);
@@ -46,29 +49,42 @@ public class Consultar {
             }
         }
        
-        
-        // Quais os eventos que têm mais de N convidados
-        int N = 1;
-        
-        // Recupera todos os eventos
-        List<Evento> todosEventos = manager.query(Evento.class);
-        List<Evento> eventosComMaisDeNConvidados = new ArrayList<>();
+        System.out.println("\n---listar eventos com tem mais de N convidados");
+        // Criando a classe para uso do filtro
+        class Filtro implements Evaluation {
+            private int n;
 
-        // Filtra em memória pelo tamanho da lista
-        for (Evento e : todosEventos) {
-            if (e.getListaConvidados().size() > N) {
-                eventosComMaisDeNConvidados.add(e);
+            public Filtro(int n) {
+                this.n = n;
+            }
+
+           
+            public void evaluate(Candidate candidate) {
+                Evento e = (Evento) candidate.getObject();
+                if (e.getListaConvidados().size() > n)
+                    candidate.include(true);
+                else
+                    candidate.include(false);
             }
         }
+        
+        //criando a query para consulta
+        int N = 1;
+        Query queryEventosFiltro = manager.query();
+        queryEventosFiltro.constrain(Evento.class);
+        queryEventosFiltro.constrain(new Filtro(N)); // aplica o filtro
+
+        List<Evento> eventosComMaisDeNConvidados = queryEventosFiltro.execute();
 
         if (eventosComMaisDeNConvidados.isEmpty()) {
-            System.out.println("\nNenhum evento com mais de " + N + " convidados");
+            System.out.println("Nenhum evento com mais de " + N + " convidados");
         } else {
-            System.out.println("\nEvento(s) com mais de " + N + " convidados:");
+            System.out.println("Evento(s) com mais de " + N + " convidados:");
             for (Evento e : eventosComMaisDeNConvidados) {
                 System.out.println(e);
             }
         }
+
 
         // Desconectar do banco
         Util.desconectar();
