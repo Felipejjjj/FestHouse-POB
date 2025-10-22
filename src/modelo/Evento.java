@@ -85,6 +85,11 @@ public class Evento {
 	//toString
 	@Override
 	public String toString() {
-		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente + "]";
+		ArrayList<String> nomesConvidados = new ArrayList<String>();
+		for(Convidado c : this.getListaConvidados()) {
+			nomesConvidados.add(c.getNome());
+		}
+		
+		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente.getNome() + " Convidados: " + nomesConvidados + "]";
 	}
 }

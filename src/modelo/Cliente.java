@@ -19,7 +19,12 @@ public class Cliente {
 		//tostring
 		@Override
 		public String toString() {
-			return "CPF: " + this.cpf + " nome: " + this.nome + " Localização: " + this.localizacao;
+			ArrayList<String> nomesEventos = new ArrayList<String>();
+			for(Evento e : this.getEventos()) {
+				nomesEventos.add(e.getNome());
+			}
+			
+			return "CPF: " + this.cpf + " nome: " + this.nome + " Localização: " + this.localizacao + " Eventos: " + nomesEventos;
 		}
 		
 		//getters e setters
