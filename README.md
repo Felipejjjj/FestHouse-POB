@@ -101,7 +101,11 @@ Fornece métodos estáticos para realizar operações de **persistência**, **re
 * `manager`: conexão ativa com o banco, obtida pela classe `Util`.
 
 ### Métodos
-
+* `conectar()` - Conecta ao banco de dados caso ainda não exista uma conexão ativa.
+Evita múltiplas conexões simultâneas.
+* `desconectar()` - Fecha a conexão com o banco de dados, liberando recursos e permitindo reconectar futuramente.
+* `apagarEvento(Evento evento)` - Remove um evento do banco, junto com todos os seus convidados associados. Após a exclusão, o evento também é removido da lista do cliente responsável.
+* `apagarCliente(Cliente cliente)` - Remove um cliente e todos os seus eventos (e respectivos convidados) do banco.
 * `gravarObjeto(Object objeto)` — armazena o objeto no banco e confirma a operação.
 * `apagarObjeto(Object objeto)` — remove o objeto do banco e confirma a operação.
 * `<T> getObjetos(Class<T> classe)` — retorna uma lista de objetos do tipo especificado presentes no banco.
