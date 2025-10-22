@@ -6,17 +6,17 @@ import modelo.Cliente;
 import modelo.Convidado;
 import modelo.Evento;
 import modelo.Localizacao;
-import repositorio.Repositorio;
+import repositorio.Util;
 
 public class Listar {
     public static void main(String[] args) {
-        Repositorio.conectar();
+        Util.conectarBanco();
         System.out.println("conectado ao banco");
         
-        List<Cliente> clientes = Repositorio.getObjetos(Cliente.class);
-        List<Localizacao> localizacoes = Repositorio.getObjetos(Localizacao.class);
-        List<Evento> eventos = Repositorio.getObjetos(Evento.class);
-        List<Convidado> convidados = Repositorio.getObjetos(Convidado.class);
+        List<Cliente> clientes = Util.getObjetos(Cliente.class);
+        List<Localizacao> localizacoes = Util.getObjetos(Localizacao.class);
+        List<Evento> eventos = Util.getObjetos(Evento.class);
+        List<Convidado> convidados = Util.getObjetos(Convidado.class);
 
         System.out.println("Clientes:");
         System.out.println("-------");
@@ -46,7 +46,7 @@ public class Listar {
 
         System.out.println("\n");
 
-        Repositorio.desconectar();
+        Util.desconectar();
         System.out.println("banco desconectado");
     }
 }

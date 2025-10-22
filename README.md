@@ -80,32 +80,87 @@ Representa um convidado associado a um evento, contendo um identificador, nome e
 
 # 💼 Classes Utilitárias
 
-## ⚙️ `Util`
-Responsável por gerenciar a **conexão com o banco de dados DB4O**, configurando o comportamento de persistência e o uso de **cascata** entre as classes.
+## 🏷️ Classe: `Util`
+A classe `Util` é responsável por **gerenciar a conexão com o banco de dados db4o**, além de **oferecer métodos utilitários para gravação, remoção e consulta de objetos persistidos**.
+Também **configura o comportamento de cascata** (update/delete/activate) e integra o sistema de **controle automático de IDs** através da classe interna `ControleID`.
 
-### Atributos
+---
 
-* `manager`: objeto `ObjectContainer` responsável pela conexão com o banco.
+### 🔧 Atributos
 
-### Métodos
+* `manager` Mantém a instância única de conexão com o banco db4o. 
 
-* `conectarBanco()` — cria e retorna a conexão com o banco DB4O. Caso já exista, reutiliza a mesma instância.
-* `desconectar()` — encerra a conexão ativa com o banco de dados.
+---
 
+### 🧩 Métodos Principais
 
-## 🗄️ `Repositorio`
-Fornece métodos estáticos para realizar operações de **persistência**, **remoção** e **consulta** de objetos no banco DB4O.
+*  `public static ObjectContainer conectarBanco()` — Estabelece e retorna a conexão com o banco de dados local (`banco.db4o`). Aplica as configurações de cascata e ativa o controle de IDs automáticos para classes com campo `id`.
 
-### Atributos
+* `public static void desconectar()` - Fecha a conexão com o banco de dados caso esteja aberta, liberando recursos.
 
-* `manager`: conexão ativa com o banco, obtida pela classe `Util`.
+* `public static void gravarObjeto(Object objeto)` - Grava (ou atualiza) um objeto no banco e realiza `commit()` da operação.
 
-### Métodos
-* `conectar()` - Conecta ao banco de dados caso ainda não exista uma conexão ativa.
-Evita múltiplas conexões simultâneas.
-* `desconectar()` - Fecha a conexão com o banco de dados, liberando recursos e permitindo reconectar futuramente.
-* `apagarEvento(Evento evento)` - Remove um evento do banco, junto com todos os seus convidados associados. Após a exclusão, o evento também é removido da lista do cliente responsável.
-* `apagarCliente(Cliente cliente)` - Remove um cliente e todos os seus eventos (e respectivos convidados) do banco.
-* `gravarObjeto(Object objeto)` — armazena o objeto no banco e confirma a operação.
-* `apagarObjeto(Object objeto)` — remove o objeto do banco e confirma a operação.
-* `<T> getObjetos(Class<T> classe)` — retorna uma lista de objetos do tipo especificado presentes no banco.
+* `public static void apagarObjeto(Object objeto)` - Remove um objeto do banco e realiza `commit()` da operação.
+
+* `public static <T> List<T> getObjetos(Class<T> classe)` - Retorna todos os objetos persistidos de uma determinada classe.
+
+* `public static void apagarEvento(Evento evento)` - Remove um evento e todos os **convidados associados** a ele.
+Também **atualiza o cliente** que possuía o evento, removendo a referência.
+
+* `public static void apagarCliente(Cliente cliente)` - Remove um cliente e **todos os eventos associados** (e, indiretamente, seus convidados). Evita inconsistências limpando listas antes da exclusão definitiva.
+
+---
+
+## 🧭 Classe Interna: `ControleID`
+Classe interna responsável por **gerenciar a geração automática de IDs únicos** para objetos persistidos no banco db4o.
+Utiliza um **banco auxiliar (`sequencia.db4o`)** para armazenar os últimos IDs gerados por classe.
+
+---
+
+### 🔧 Atributos
+
+* `private static ObjectContainer sequencia` - Banco auxiliar que armazena a sequência de IDs.     
+* `private static TreeMap<String, RegistroID> registros` -  Cache com o último ID registrado por classe.      
+* `private static boolean salvar` - Indica se há modificações pendentes a serem salvas. 
+
+---
+
+### 🧩 Métodos Principais
+
+* `public static void ativar(boolean ativa, ObjectContainer manager)` - Ativa o controle de IDs automáticos. Lê os registros de IDs existentes e registra *triggers* (eventos db4o) para:
+
+  * **Antes de gravar um objeto** (`creating`): incrementa e atribui o próximo ID.
+  * **Após commit** (`created`): salva alterações de IDs no banco auxiliar.
+  * **Antes de fechar o banco** (`closing`): encerra o banco de sequências.
+
+* `private static void lerRegistrosID()` - Carrega os registros de IDs armazenados no banco auxiliar.
+
+* `private static void salvarRegistrosID()` - Salva os registros de IDs modificados (após commits).
+
+* `private static RegistroID obterRegistroID(String nomeclasse)` - Obtém (ou cria) o registro de ID para a classe informada.
+
+---
+
+## 🧱 Classe Interna: `RegistroID`
+Classe auxiliar usada pelo `ControleID` para **armazenar o último ID gerado de cada classe**.
+Cada instância representa o estado de ID de uma classe específica persistida no banco auxiliar.
+
+---
+
+### 🔧 Atributos
+
+* `private String nomedaclasse` - Nome da classe controlada.                  
+* `private int ultimoid` - Último ID gerado.                           
+* `transient private boolean modificado` - Indica se houve alteração (não persistido). 
+
+---
+
+### 🧩 Métodos Principais
+
+* `public RegistroID(String nomedaclasse)` - Construtor que inicializa o registro para a classe especificada, com ID inicial igual a `0`.
+
+* `public void incrementarID()` - Incrementa o último ID gerado e marca o registro como modificado.
+
+* `public int getid()` - Retorna o último ID gerado.
+
+* `@Override public String toString()` - Retorna uma representação textual contendo o nome da classe e o último ID gerado.

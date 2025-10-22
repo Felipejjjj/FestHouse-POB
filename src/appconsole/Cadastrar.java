@@ -4,12 +4,12 @@ import modelo.Cliente;
 import modelo.Convidado;
 import modelo.Evento;
 import modelo.Localizacao;
-import repositorio.Repositorio;
+import repositorio.Util;
 
 public class Cadastrar {
 
 	public static void main(String[] args) {
-		Repositorio.conectar();
+		Util.conectarBanco();
 		System.out.println("conectado ao banco");
 		
 		//Criação de Objetos:
@@ -40,13 +40,13 @@ public class Cadastrar {
 		Convidado convidado8 = new Convidado("Arthur", "7777", evento3);
 		
 		//gravando objetos no banco
-		Repositorio.gravarObjeto(evento1);
-		Repositorio.gravarObjeto(evento2);
-		Repositorio.gravarObjeto(evento3);
+		Util.gravarObjeto(evento1);
+		Util.gravarObjeto(evento2);
+		Util.gravarObjeto(evento3);
 		
 		System.out.println("objetos gravados");
 
-		Repositorio.desconectar();
+		Util.desconectar();
 		System.out.println("banco desconectado");
 	}
 }
