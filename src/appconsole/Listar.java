@@ -10,6 +10,9 @@ import repositorio.Repositorio;
 
 public class Listar {
     public static void main(String[] args) {
+        Repositorio.conectar();
+        System.out.println("conectado ao banco");
+        
         List<Cliente> clientes = Repositorio.getObjetos(Cliente.class);
         List<Localizacao> localizacoes = Repositorio.getObjetos(Localizacao.class);
         List<Evento> eventos = Repositorio.getObjetos(Evento.class);
@@ -42,5 +45,8 @@ public class Listar {
         }
 
         System.out.println("\n");
+
+        Repositorio.desconectar();
+        System.out.println("banco desconectado");
     }
 }

@@ -39,6 +39,26 @@ public class Cliente {
 		public ArrayList<Evento> getEventos() {
 			return this.eventos;
 		}
+
+		public Evento getEvento(int index) throws Exception{
+			try {
+				Evento eventoEncontrado = this.eventos.get(index);
+				return eventoEncontrado;
+			}
+			catch(Exception ex) {
+				throw new Exception("Evento não encontrado");
+			}
+		}
+
+		public Evento getEvento(String nome) throws Exception{			
+			for (Evento e : eventos) {
+				if (e.getNome().equals(nome)) {
+					return e;
+				}
+			}
+
+			throw new Exception("Evento não encontrado");
+		}
 		
 		//métodos gerais
 		public void adicionarEvento(Evento evento) {

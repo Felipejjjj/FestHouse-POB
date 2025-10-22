@@ -12,14 +12,22 @@ import modelo.Cliente;
 
 public class Repositorio {
     //atributos
-    private static ObjectContainer manager = Util.conectarBanco();
-
-    //conecta ao banco toda vez que a classe é chamada, e atualiza a variável qtdInstanciasConvidados.
-    static {
-        manager = Util.conectarBanco();
-    }
+    private static ObjectContainer manager;
 
     //métodos
+    public static void conectar() {
+        if (manager == null) {
+            manager = Util.conectarBanco(); 
+        }
+    }
+
+    public static void desconectar() {
+        if (manager != null) {
+            manager.close();
+            manager = null;
+        }
+    }
+
     public static void gravarObjeto(Object objeto) {
         manager.store(objeto);
         manager.commit();

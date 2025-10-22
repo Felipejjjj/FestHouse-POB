@@ -9,6 +9,9 @@ import repositorio.Repositorio;
 public class Alterar {
 
 	public static void main(String[] args) {
+		Repositorio.conectar();
+		System.out.println("conectado ao banco");
+
 		 List<Evento> eventos = Repositorio.getObjetos(Evento.class);
 		 List<Convidado> convidados = Repositorio.getObjetos(Convidado.class);
 			
@@ -45,6 +48,9 @@ public class Alterar {
 			Repositorio.gravarObjeto(eventoEncontrado);
 			System.out.println("Convidado " + convidadoParaRemover.getNome() + " removido do evento.");
 		}
+
+		Repositorio.desconectar();
+		System.out.println("banco desconectado");
 	}
 
 }

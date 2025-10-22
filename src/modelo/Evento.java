@@ -49,6 +49,26 @@ public class Evento {
 		return listaConvidados;
 	}
 
+	public Convidado getConvidado(int id) throws Exception{			
+		for (Convidado c : listaConvidados) {
+			if (c.getId() == id) {
+				return c;
+			}
+		}
+
+		throw new Exception("Convidado não encontrado");
+	}
+
+	public Convidado getConvidado(String nome) throws Exception{			
+		for (Convidado c : listaConvidados) {
+			if (c.getNome().equals(nome)) {
+				return c;
+			}
+		}
+
+		throw new Exception("Convidado não encontrado");
+	}
+
 	public void adicionarConvidado(Convidado convidado) {
 		this.listaConvidados.add(convidado);
 	}
@@ -56,6 +76,10 @@ public class Evento {
 	public void removerConvidado(Convidado convidado) {		
 		this.listaConvidados.remove(convidado);
 		Repositorio.apagarObjeto(convidado);
+	}
+
+	public void removerConvidado(int id) throws Exception{
+		this.removerConvidado(this.getConvidado(id));
 	}
 
 	//toString

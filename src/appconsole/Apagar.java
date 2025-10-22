@@ -8,6 +8,9 @@ import repositorio.Repositorio;
 public class Apagar {
 
 	public static void main(String[] args) {
+		Repositorio.conectar();
+		System.out.println("conectado ao banco");
+
 		List<Evento> eventos = Repositorio.getObjetos(Evento.class);
 		//remover evento "Visita ao museu"
 		for (Evento e : eventos) {
@@ -19,5 +22,8 @@ public class Apagar {
 				
 			}
 		}
+
+		Repositorio.desconectar();
+		System.out.println("banco desconectado");
 	}
 }

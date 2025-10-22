@@ -9,6 +9,9 @@ import repositorio.Repositorio;
 public class Cadastrar {
 
 	public static void main(String[] args) {
+		Repositorio.conectar();
+		System.out.println("conectado ao banco");
+		
 		//Criação de Objetos:
 		
 		//Localização
@@ -42,5 +45,8 @@ public class Cadastrar {
 		Repositorio.gravarObjeto(evento3);
 		
 		System.out.println("objetos gravados");
+
+		Repositorio.desconectar();
+		System.out.println("banco desconectado");
 	}
 }
