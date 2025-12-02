@@ -1,5 +1,93 @@
 package appconsole;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.Convidado;
+import modelo.Evento;
+import requisito.Fachada;
+
+public class Consultar {
+
+    public Consultar() {
+
+        try {
+
+            // ================================
+            System.out.println("\n--- Eventos na data X ---");
+            String dataX = "10/10/2025";
+
+            List<Evento> eventosNaData = new ArrayList<>();
+            for (Evento e : Fachada.listarEventos()) {
+                if (e.getData().equals(dataX)) {
+                    eventosNaData.add(e);
+                }
+            }
+
+            if (eventosNaData.isEmpty()) {
+                System.out.println("Nenhum evento encontrado na data: " + dataX);
+            } else {
+                for (Evento e : eventosNaData) {
+                    System.out.println(e);
+                }
+            }
+
+            // ================================
+            System.out.println("\n--- Convidados do evento na data X ---");
+
+            List<Convidado> convidadosNaData = new ArrayList<>();
+            for (Convidado c : Fachada.listarConvidados()) {
+                if (c.getEvento().getData().equals(dataX)) {
+                    convidadosNaData.add(c);
+                }
+            }
+
+            if (convidadosNaData.isEmpty()) {
+                System.out.println("Nenhum convidado encontrado para eventos na data " + dataX);
+            } else {
+                for (Convidado c : convidadosNaData) {
+                    System.out.println(c);
+                }
+            }
+
+            // ================================
+            System.out.println("\n--- Eventos com mais de N convidados ---");
+            int N = 2;
+
+            List<Evento> eventosMaisN = new ArrayList<>();
+            for (Evento e : Fachada.listarEventos()) {
+                if (e.getListaConvidados().size() > N) {
+                    eventosMaisN.add(e);
+                }
+            }
+
+            if (eventosMaisN.isEmpty()) {
+                System.out.println("Nenhum evento possui mais de " + N + " convidados.");
+            } else {
+                for (Evento e : eventosMaisN) {
+                    System.out.println(e);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\nfim do programa");
+    }
+
+    // ===============================
+    public static void main(String[] args) {
+        new Consultar();
+    }
+}
+
+
+
+
+/**
+package appconsole;
+
 import java.util.List;
 
 import com.db4o.ObjectContainer;
@@ -90,3 +178,4 @@ public class Consultar {
         Util.desconectar();
     }
 }
+**/

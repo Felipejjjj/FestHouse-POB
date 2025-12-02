@@ -1,5 +1,36 @@
 package appconsole;
 
+import requisito.Fachada;
+
+public class Apagar {
+
+    public Apagar() {
+
+        try {
+            //apagar convidado pelo ID
+            Fachada.apagarConvidado(1);
+            System.out.println("apagou convidado de ID 1");
+
+            Fachada.apagarConvidado(2);
+            System.out.println("apagou convidado de ID 2");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("fim do programa");
+    }
+
+    //=================================================
+    public static void main(String[] args) {
+        new Apagar();
+    }
+}
+
+
+/*
+package appconsole;
+
 import java.util.List;
 
 import modelo.Evento;
@@ -27,3 +58,4 @@ public class Apagar {
 		System.out.println("banco desconectado");
 	}
 }
+**/

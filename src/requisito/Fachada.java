@@ -120,6 +120,54 @@ public class Fachada {
             eventoRep.desconectar();
         }
     }
+   
+    public static void alterarDataEvento(String nomeEvento, String novaData) throws Exception {
+        eventoRep.conectar();
+        eventoRep.begin();
+        try {
+            Evento evento = eventoRep.ler(nomeEvento);
+            if (evento == null) {
+                throw new Exception("Evento '" + nomeEvento + "' não encontrado.");
+            }
+
+            evento.setData(novaData);
+            eventoRep.atualizar(evento);
+
+            eventoRep.commit();
+        } catch (Exception e) {
+            eventoRep.rollback();
+            throw e;
+        } finally {
+            eventoRep.desconectar();
+        }
+    }
+
+    public static void alterarNomeEvento(String nomeAtual, String novoNome) throws Exception {
+        eventoRep.conectar();
+        eventoRep.begin();
+        try {
+            Evento evento = eventoRep.ler(nomeAtual);
+            if (evento == null) {
+                throw new Exception("Evento '" + nomeAtual + "' não encontrado.");
+            }
+
+            // verifica unicidade
+            if (eventoRep.ler(novoNome) != null) {
+                throw new Exception("Já existe um evento com o nome '" + novoNome + "'.");
+            }
+
+            evento.setNome(novoNome);
+            eventoRep.atualizar(evento);
+
+            eventoRep.commit();
+        } catch (Exception e) {
+            eventoRep.rollback();
+            throw e;
+        } finally {
+            eventoRep.desconectar();
+        }
+    }
+
 
     public static List<Evento> listarEventos() {
         eventoRep.conectar();
@@ -189,6 +237,60 @@ public class Fachada {
         return lista;
     }
 
+    public static void alterarNomeConvidado(int idConvidado, String novoNome) throws Exception {
+        convidadoRep.conectar();
+        convidadoRep.begin();
+        try {
+            Convidado convidado = convidadoRep.ler(idConvidado);
+            if (convidado == null) {
+                throw new Exception("Convidado com ID " + idConvidado + " não encontrado.");
+            }
+
+            convidado.setNome(novoNome);
+            convidadoRep.atualizar(convidado);
+
+            convidadoRep.commit();
+        } catch (Exception e) {
+            convidadoRep.rollback();
+            throw e;
+        } finally {
+            convidadoRep.desconectar();
+        }
+    }
+
+    public static void removerConvidadoDoEvento(String nomeEvento, int idConvidado) throws Exception {
+        eventoRep.conectar();
+        eventoRep.begin();
+
+        try {
+            Evento evento = eventoRep.ler(nomeEvento);
+            if (evento == null) {
+                throw new Exception("Evento '" + nomeEvento + "' não encontrado.");
+            }
+
+            Convidado convidado = convidadoRep.ler(idConvidado);
+            if (convidado == null) {
+                throw new Exception("Convidado com ID " + idConvidado + " não encontrado.");
+            }
+
+            if (!evento.getListaConvidados().contains(convidado)) {
+                throw new Exception("Esse convidado não pertence ao evento informado.");
+            }
+
+            evento.removerConvidado(convidado);
+            eventoRep.atualizar(evento);
+
+            convidadoRep.apagar(convidado);
+
+            eventoRep.commit();
+        } catch (Exception e) {
+            eventoRep.rollback();
+            throw e;
+        } finally {
+            eventoRep.desconectar();
+        }
+    }
+    
     public static void apagarConvidado(int idConvidado) throws Exception {
         convidadoRep.conectar();
         convidadoRep.begin();
