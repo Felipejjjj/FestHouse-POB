@@ -1,8 +1,8 @@
 package util;
 /**********************************
  * IFPB - Curso Superior de Sistemas para Internet
- * Persist�ncia de Objetos
- * Prof. Fausto Maranh�o Ayres
+ * Persistência de Objetos
+ * Prof. Fausto Maranhão Ayres
  **********************************/
 
 import java.lang.reflect.Field;
@@ -20,14 +20,14 @@ import com.db4o.query.Query;
 
 
 public class ControleID {
-	//classe que controla a gera��o de IDs sequenciais para 
+	//classe que controla a geração de IDs sequenciais para
 	//as classes que possuem atributo id
 	
 	private static ObjectContainer sequencia; // bd auxiliar de sequencias DE IDs
 
 	public static void ativar(ObjectContainer manager) {
 		if (manager == null)
-			throw new RuntimeException("N�o pode ativar ControleID - manager desconectado"); // desativado
+			throw new RuntimeException("Não pode ativar ControleID - manager desconectado"); // desativado
 
 		if (manager instanceof EmbeddedObjectContainer) {
 			// banco de sequencia local

@@ -20,6 +20,7 @@ public class Fachada {
      * * Método auxiliar para gerar ID único
      * (Simulação de auto-incremento)
      * **********************************************/
+
     private static int gerarNovoIdConvidado() {
         // Em um cenário real com db4o, poderíamos usar a classe util.ControleID
         // Aqui, faremos buscando o maior ID existente + 1
@@ -305,7 +306,8 @@ public class Fachada {
             
             // O método removerConvidado na classe Evento já remove da lista e chama Util.apagarObjeto
             if (evento != null) {
-                evento.removerConvidado(convidado);
+                //evento.removerConvidado(convidado);
+                convidadoRep.apagar(convidado);
                 eventoRep.atualizar(evento); // Persiste a remoção da lista no evento
             } else {
                 // Caso orfão (apenas por segurança)

@@ -2,7 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 
-import repositorio.Util;
+//import repositorio.Util;
+import requisito.Fachada;
 
 public class Evento {
 	//atributos
@@ -73,9 +74,10 @@ public class Evento {
 		this.listaConvidados.add(convidado);
 	}
 	
-	public void removerConvidado(Convidado convidado) {		
+	public void removerConvidado(Convidado convidado) throws Exception {
 		this.listaConvidados.remove(convidado);
-		Util.apagarObjeto(convidado);
+		//Util.apagarObjeto(convidado);
+		Fachada.apagarConvidado(convidado.getId());
 	}
 
 	public void removerConvidado(int id) throws Exception{
