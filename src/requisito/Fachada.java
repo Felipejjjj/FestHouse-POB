@@ -81,7 +81,7 @@ public class Fachada {
             }
 
             // Criar e salvar Evento
-            // O construtor do Evento já faz: cliente.adicionarEvento(this);
+            // O construtor do evento já adiciona ele na lista de eventos do cliente
             Evento novoEvento = new Evento(data, nomeEvento, cliente);
 
             eventoRep.criar(novoEvento);
@@ -170,7 +170,7 @@ public class Fachada {
             String senhaGerada = "";
             boolean senhaUnica = false;
 
-            // Loop para garantir unicidade da senha dentro deste evento
+            // Loop pra garantir que a senha seja única
             while (!senhaUnica) {
                 int numero = random.nextInt(9999) + 1; // Gera 1 a 9999
                 senhaGerada = evento.getData() + "-" + numero;
@@ -185,12 +185,12 @@ public class Fachada {
             }
 
             // Criar Convidado
-            // O construtor do Convidado faz: evento.adicionarConvidado(this);
+            // o construtor do convidado já adiciona ele na lista de convidados do evento
             Convidado novoConvidado = new Convidado(nomeConvidado, senhaGerada, evento);
 
             // Persistir
             convidadoRep.criar(novoConvidado);
-            eventoRep.atualizar(evento); // Atualiza o evento para salvar a nova lista de convidados
+            eventoRep.atualizar(evento);
 
             convidadoRep.commit();
         } catch (Exception e) {
@@ -277,7 +277,7 @@ public class Fachada {
             if (evento != null) {
                 evento.removerConvidado(convidado);
                 convidadoRep.apagar(convidado);
-                eventoRep.atualizar(evento); // Persiste a remoção da lista no evento
+                eventoRep.atualizar(evento);
             } else {
                 // Caso orfão (apenas por segurança)
                 convidadoRep.apagar(convidado);
