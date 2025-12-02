@@ -1,8 +1,10 @@
 package repositorio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.query.Query;
+
 import modelo.Convidado;
 import util.Util;
 
@@ -25,4 +27,26 @@ public class ConvidadoRepositorio extends CRUDRepositorio<Convidado> {
             return null;
         }
     }
+    
+    /**********************************************************
+     * 
+     * CONSULTAS DE CONVIDADO
+     * 
+     **********************************************************/
+
+    public List<Convidado> lerPorNome(String parteNome) {
+        Query q = Util.getManager().query();
+        q.constrain(Convidado.class);
+        q.descend("nome").constrain(parteNome).like();
+        return new ArrayList<>(q.execute());
+    }
+    
+    
+    public List<Convidado> lerPorEvento(String nomeEvento) {
+        Query q = Util.getManager().query();
+        q.constrain(Convidado.class);
+        q.descend("evento").descend("nome").constrain(nomeEvento);
+        return new ArrayList<>(q.execute());
+    }
+
 }

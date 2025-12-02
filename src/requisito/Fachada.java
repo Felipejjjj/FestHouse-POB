@@ -291,4 +291,54 @@ public class Fachada {
             convidadoRep.desconectar();
         }
     }
+    
+    /**********************************************
+     * * CONSULTAS IMPLEMENTADAS NOS REPOSITORIOS DE CADA CLASSE
+     **********************************************/
+
+    // -------- CLIENTES --------
+    public static List<Cliente> consultarClientesPorNome(String parteNome) {
+        clienteRep.conectar();
+        List<Cliente> result = clienteRep.lerPorNome(parteNome);
+        clienteRep.desconectar();
+        return result;
+    }
+
+    // -------- EVENTOS --------
+    public static List<Evento> consultarEventosPorNome(String parteNome) {
+        eventoRep.conectar();
+        List<Evento> result = eventoRep.lerPorNome(parteNome);
+        eventoRep.desconectar();
+        return result;
+    }
+
+    public static List<Evento> consultarEventosPorData(String data) {
+        eventoRep.conectar();
+        List<Evento> result = eventoRep.lerPorData(data);
+        eventoRep.desconectar();
+        return result;
+    }
+
+    public static List<Evento> consultarEventosComMaisDeNConvidados(int n) {
+        eventoRep.conectar();
+        List<Evento> result = eventoRep.lerMaisDeNConvidados(n);
+        eventoRep.desconectar();
+        return result;
+    }
+
+    // -------- CONVIDADOS --------
+    public static List<Convidado> consultarConvidadosPorNome(String parteNome) {
+        convidadoRep.conectar();
+        List<Convidado> result = convidadoRep.lerPorNome(parteNome);
+        convidadoRep.desconectar();
+        return result;
+    }
+
+    public static List<Convidado> consultarConvidadosDeEvento(String nomeEvento) {
+        convidadoRep.conectar();
+        List<Convidado> result = convidadoRep.lerPorEvento(nomeEvento);
+        convidadoRep.desconectar();
+        return result;
+    }
+
 }

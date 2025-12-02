@@ -28,6 +28,19 @@ public class ClienteRepositorio extends CRUDRepositorio<Cliente> {
         }
     }
     
+    /**********************************************************
+     * 
+     * CONSULTAS DE CLIENTE
+     * 
+     **********************************************************/
+
+    public List<Cliente> lerPorNome(String parteNome) {
+        Query q = Util.getManager().query();
+        q.constrain(Cliente.class);
+        q.descend("nome").constrain(parteNome).like();
+        return new ArrayList<>(q.execute());
+    }
+
 
     @Override
     public void apagar(Cliente cliente) {
@@ -49,3 +62,4 @@ public class ClienteRepositorio extends CRUDRepositorio<Cliente> {
 		}
     }
 }
+

@@ -1,7 +1,10 @@
 package repositorio;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.db4o.query.Candidate;
+import com.db4o.query.Evaluation;
 import com.db4o.query.Query;
 
 import modelo.Cliente;
@@ -49,4 +52,49 @@ public class EventoRepositorio extends CRUDRepositorio<Evento> {
             Util.getManager().commit();
         }
     }
+    /**********************************************************
+     * 
+     * CONSULTAS DE EVENTO
+     * 
+     **********************************************************/
+
+    public List<Evento> lerPorNome(String parteNome) {
+        Query q = Util.getManager().query();
+        q.constrain(Evento.class);
+        q.descend("nome").constrain(parteNome).like();
+        return new ArrayList<>(q.execute());
+    }
+
+    public List<Evento> lerPorData(String data) {
+        Query q = Util.getManager().query();
+        q.constrain(Evento.class);
+        q.descend("data").constrain(data);
+        return new ArrayList<>(q.execute());
+    }
+
+    public List<Evento> lerMaisDeNConvidados(int n) {
+        Query q = Util.getManager().query();
+        q.constrain(Evento.class);
+        q.constrain(new FiltroEventoMaisN(n));
+        return new ArrayList<>(q.execute());
+    }
+
+    
+    //----------------------------//
+    @SuppressWarnings("serial")
+    class FiltroEventoMaisN implements Evaluation {
+        private int n;
+
+        public FiltroEventoMaisN(int n) {
+            this.n = n;
+        }
+
+        @Override
+        public void evaluate(Candidate candidate) {
+            Evento e = (Evento) candidate.getObject();
+            candidate.include(e.getListaConvidados().size() > n);
+        }
+    }
+
+    
 }
