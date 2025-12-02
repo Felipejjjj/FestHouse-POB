@@ -65,6 +65,14 @@ public class Cliente {
 			throw new Exception("Evento não encontrado");
 		}
 		
+		public Localizacao getLocalizacao() {
+	        return this.localizacao;
+	    }
+
+	    public void setLocalizacao(Localizacao localizacao) {
+	        this.localizacao = localizacao;
+	    }
+		
 		//métodos gerais
 		public void adicionarEvento(Evento evento) {
 			this.eventos.add(evento);
