@@ -31,7 +31,7 @@ public class Alterar {
 
         // Alterar nome do convidado
         try {
-            Fachada.alterarNomeConvidado(2, "NovoNomeConvidado");
+            Fachada.alterarNomeConvidado(2, "Eduardo");
             System.out.println("Nome do convidado ID 2 alterado.");
         } catch (Exception e) {
             System.out.println(e.getMessage());

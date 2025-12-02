@@ -8,24 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Alterar.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Alterar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Apagar.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Apagar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Cadastrar.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Cadastrar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Consultar.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Consultar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Listar.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Listar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/modelo/Evento.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/modelo/Evento.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/CRUDRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/CRUDRepositorio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/ClienteRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/ClienteRepositorio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/ControleID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/ConvidadoRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/ConvidadoRepositorio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/EventoRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/EventoRepositorio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/RegistroID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/Util.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/requisito/Fachada.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/requisito/Fachada.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/ControleID.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/ControleID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/RegistroID.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/RegistroID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/appconsole/Alterar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/appconsole/Alterar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/appconsole/Apagar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/appconsole/Apagar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modelo/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Evento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/requisito/Fachada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/requisito/Fachada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/ControleID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/ControleID.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

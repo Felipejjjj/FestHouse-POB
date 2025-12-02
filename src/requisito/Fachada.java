@@ -16,30 +16,7 @@ public class Fachada {
     private static EventoRepositorio eventoRep = new EventoRepositorio();
     private static ConvidadoRepositorio convidadoRep = new ConvidadoRepositorio();
 
-    /**********************************************
-     * * Método auxiliar para gerar ID único
-     * (Simulação de auto-incremento)
-     * **********************************************/
-
-    private static int gerarNovoIdConvidado() {
-        // Em um cenário real com db4o, poderíamos usar a classe util.ControleID
-        // Aqui, faremos buscando o maior ID existente + 1
-        List<Convidado> todos = convidadoRep.listar();
-        if (todos.isEmpty()) {
-            return 1;
-        }
-        int maxId = 0;
-        for (Convidado c : todos) {
-            if (c.getId() > maxId) {
-                maxId = c.getId();
-            }
-        }
-        return maxId + 1;
-    }
-
-    /**********************************************
-     * * CLIENTE
-     * **********************************************/
+    // -=-=-=-=--=-=-=-=- CLIENTE -=-=-=-=--=-=-=-=-
     public static void criarCliente(String cpf, String nome, double lat, double lon) throws Exception {
         clienteRep.conectar();
         clienteRep.begin();
@@ -80,9 +57,7 @@ public class Fachada {
         return lista;
     }
 
-    /**********************************************
-     * * EVENTO
-     * **********************************************/
+    // -=-=-=-=--=-=-=-=- EVENTO -=-=-=-=--=-=-=-=-
     public static void criarEvento(String data, String nomeEvento, String cpfCliente) throws Exception {
         eventoRep.conectar();
         eventoRep.begin();
@@ -177,9 +152,7 @@ public class Fachada {
         return lista;
     }
 
-    /**********************************************
-     * * CONVIDADO
-     * **********************************************/
+    // -=-=-=-=-=-=-=-=- CONVIDADO -=-=-=-=--=-=-=-=-
     public static void criarConvidado(String nomeConvidado, String nomeEvento) throws Exception {
         convidadoRep.conectar();
         convidadoRep.begin();
@@ -214,9 +187,6 @@ public class Fachada {
             // Criar Convidado
             // O construtor do Convidado faz: evento.adicionarConvidado(this);
             Convidado novoConvidado = new Convidado(nomeConvidado, senhaGerada, evento);
-            
-            // Atribuir ID (simulando auto-incremento)
-            novoConvidado.setId(gerarNovoIdConvidado());
 
             // Persistir
             convidadoRep.criar(novoConvidado);
@@ -303,10 +273,9 @@ public class Fachada {
             }
 
             Evento evento = convidado.getEvento();
-            
-            // O método removerConvidado na classe Evento já remove da lista e chama Util.apagarObjeto
+
             if (evento != null) {
-                //evento.removerConvidado(convidado);
+                evento.removerConvidado(convidado);
                 convidadoRep.apagar(convidado);
                 eventoRep.atualizar(evento); // Persiste a remoção da lista no evento
             } else {

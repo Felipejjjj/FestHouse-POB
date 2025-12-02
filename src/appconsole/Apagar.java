@@ -8,11 +8,11 @@ public class Apagar {
 
         try {
             //apagar convidado pelo ID
-            Fachada.apagarConvidado(1);
-            System.out.println("apagou convidado de ID 1");
+            Fachada.apagarConvidado(3);
+            System.out.println("apagou convidado de ID 3");
 
-            Fachada.apagarConvidado(2);
-            System.out.println("apagou convidado de ID 2");
+            Fachada.apagarConvidado(4);
+            System.out.println("apagou convidado de ID 4");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

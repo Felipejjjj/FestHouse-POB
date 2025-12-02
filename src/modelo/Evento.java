@@ -77,7 +77,7 @@ public class Evento {
 	public void removerConvidado(Convidado convidado) throws Exception {
 		this.listaConvidados.remove(convidado);
 		//Util.apagarObjeto(convidado);
-		Fachada.apagarConvidado(convidado.getId());
+		//Fachada.apagarConvidado(convidado.getId());
 	}
 
 	public void removerConvidado(int id) throws Exception{
