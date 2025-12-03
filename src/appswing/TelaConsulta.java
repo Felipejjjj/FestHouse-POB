@@ -2,91 +2,125 @@ package appswing;
 
 import javax.swing.*;
 import requisito.Fachada;
+
 import modelo.Evento;
 import modelo.Cliente;
 import modelo.Convidado;
 
-import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class TelaConsulta extends JFrame {
+public class TelaConsulta {
 
+    private JDialog frame;
     private JTextField tfFiltro;
     private JTextArea taResultado;
 
     public TelaConsulta() {
-        setTitle("Consultas");
-        setSize(700, 500);
-        setLocationRelativeTo(null);
-
-        JPanel painel = new JPanel(new GridLayout(6, 1));
-
-        tfFiltro = new JTextField();
-        painel.add(new JLabel("Filtro:"));
-        painel.add(tfFiltro);
-
-        JButton btCliente = new JButton("Clientes por Nome");
-        JButton btEventoNome = new JButton("Eventos por Nome");
-        JButton btEventoData = new JButton("Eventos por Data");
-        JButton btConvidadoNome = new JButton("Convidados por Nome");
-        JButton btConvidadoEvento = new JButton("Convidados de Evento");
-        JButton btEventosN = new JButton("Eventos com mais de N convidados");
-
-        painel.add(btCliente);
-        painel.add(btEventoNome);
-        painel.add(btEventoData);
-        painel.add(btConvidadoNome);
-        painel.add(btConvidadoEvento);
-        painel.add(btEventosN);
-
-        add(painel, BorderLayout.NORTH);
-
-        taResultado = new JTextArea();
-        add(new JScrollPane(taResultado), BorderLayout.CENTER);
-
-        btCliente.addActionListener(e -> listarClientes());
-        btEventoNome.addActionListener(e -> listarEventosPorNome());
-        btEventoData.addActionListener(e -> listarEventosPorData());
-        btConvidadoNome.addActionListener(e -> listarConvidadosPorNome());
-        btConvidadoEvento.addActionListener(e -> listarConvidadosDeEvento());
-        btEventosN.addActionListener(e -> listarEventosNConvidados());
-
-        setVisible(true);
+        initialize();
     }
 
-    private void listarClientes() {
+    private void initialize() {
+
+        frame = new JDialog();
+        frame.setTitle("Consultas");
+        frame.setModal(true);
+        frame.setSize(750, 520);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(null);
+
+        JLabel lblFiltro = new JLabel("Filtro:");
+        lblFiltro.setBounds(20, 20, 60, 25);
+        frame.add(lblFiltro);
+
+        tfFiltro = new JTextField();
+        tfFiltro.setBounds(80, 20, 220, 25);
+        frame.add(tfFiltro);
+
+        JButton btCliente = new JButton("Clientes por Nome");
+        btCliente.setBounds(320, 20, 160, 25);
+        frame.add(btCliente);
+
+       
+        JButton btEventoNome = new JButton("Eventos por Nome");
+        btEventoNome.setBounds(20, 65, 160, 25);
+        frame.add(btEventoNome);
+
+        JButton btEventoData = new JButton("Eventos por Data");
+        btEventoData.setBounds(200, 65, 160, 25);
+        frame.add(btEventoData);
+
+        JButton btConvidadoNome = new JButton("Convidados por Nome");
+        btConvidadoNome.setBounds(380, 65, 170, 25);
+        frame.add(btConvidadoNome);
+
+        JButton btConvidadoEvento = new JButton("Convidados de Evento");
+        btConvidadoEvento.setBounds(570, 65, 160, 25);
+        frame.add(btConvidadoEvento);
+
+       
+
+        JButton btEventoN = new JButton("Eventos com mais de N convidados");
+        btEventoN.setBounds(20, 105, 300, 25);
+        frame.add(btEventoN);
+
+       
+
+        taResultado = new JTextArea();
+        taResultado.setEditable(false);
+
+        JScrollPane scroll = new JScrollPane(taResultado);
+        scroll.setBounds(20, 155, 710, 300);
+        frame.add(scroll);
+
+
+
+        btCliente.addActionListener(e -> consultarClientes());
+        btEventoNome.addActionListener(e -> consultarEventosNome());
+        btEventoData.addActionListener(e -> consultarEventosData());
+        btConvidadoNome.addActionListener(e -> consultarConvidadosNome());
+        btConvidadoEvento.addActionListener(e -> consultarConvidadosEvento());
+        btEventoN.addActionListener(e -> consultarEventosN());
+
+        frame.setVisible(true);
+    }
+
+    private void limpar() {
         taResultado.setText("");
+    }
+
+    private void consultarClientes() {
+        limpar();
         List<Cliente> lista = Fachada.consultarClientesPorNome(tfFiltro.getText());
         lista.forEach(c -> taResultado.append(c + "\n"));
     }
 
-    private void listarEventosPorNome() {
-        taResultado.setText("");
+    private void consultarEventosNome() {
+        limpar();
         List<Evento> lista = Fachada.consultarEventosPorNome(tfFiltro.getText());
         lista.forEach(e -> taResultado.append(e + "\n"));
     }
 
-    private void listarEventosPorData() {
-        taResultado.setText("");
+    private void consultarEventosData() {
+        limpar();
         List<Evento> lista = Fachada.consultarEventosPorData(tfFiltro.getText());
         lista.forEach(e -> taResultado.append(e + "\n"));
     }
 
-    private void listarConvidadosPorNome() {
-        taResultado.setText("");
+    private void consultarConvidadosNome() {
+        limpar();
         List<Convidado> lista = Fachada.consultarConvidadosPorNome(tfFiltro.getText());
         lista.forEach(c -> taResultado.append(c + "\n"));
     }
 
-    private void listarConvidadosDeEvento() {
-        taResultado.setText("");
+    private void consultarConvidadosEvento() {
+        limpar();
         List<Convidado> lista = Fachada.consultarConvidadosDeEvento(tfFiltro.getText());
         lista.forEach(c -> taResultado.append(c + "\n"));
     }
 
-    private void listarEventosNConvidados() {
-        taResultado.setText("");
+    private void consultarEventosN() {
+        limpar();
         try {
             int n = Integer.parseInt(tfFiltro.getText());
             List<Evento> lista = Fachada.consultarEventosComMaisDeNConvidados(n);

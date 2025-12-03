@@ -2,106 +2,145 @@ package appswing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import requisito.Fachada;
-import modelo.Cliente;
-
-import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class TelaCliente extends JFrame {
-    private JTable tabela;
-    private DefaultTableModel modelo;
+import modelo.Cliente;
+import requisito.Fachada;
+
+public class TelaCliente {
+
+    private JDialog frame;
+    private JTable table;
+    private DefaultTableModel model;
 
     private JTextField tfCpf, tfNome, tfLat, tfLon;
+    private JLabel labelMensagem;
 
     public TelaCliente() {
-        setTitle("Clientes");
-        setSize(700, 500);
-        setLocationRelativeTo(null);
+        initialize();
+    }
 
-        setLayout(new BorderLayout());
+    private void initialize() {
+        frame = new JDialog();
+        frame.setTitle("Clientes");
+        frame.setModal(true);
+        frame.setSize(700, 450);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(null);
 
-        modelo = new DefaultTableModel(new Object[]{"CPF", "Nome", "Latitude", "Longitude"}, 0);
-        tabela = new JTable(modelo);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(20, 20, 640, 150);
+        frame.add(scrollPane);
 
-        JScrollPane scroll = new JScrollPane(tabela);
-        add(scroll, BorderLayout.CENTER);
+        table = new JTable();
+        model = new DefaultTableModel(new Object[]{"CPF", "Nome", "Latitude", "Longitude"}, 0);
+        table.setModel(model);
+        scrollPane.setViewportView(table);
 
-        JPanel painel = new JPanel();
-        painel.setLayout(new GridLayout(5, 2));
+        JLabel lblCpf = new JLabel("CPF:");
+        lblCpf.setBounds(20, 190, 80, 20);
+        frame.add(lblCpf);
 
-        painel.add(new JLabel("CPF:"));
         tfCpf = new JTextField();
-        painel.add(tfCpf);
+        tfCpf.setBounds(100, 190, 150, 20);
+        frame.add(tfCpf);
 
-        painel.add(new JLabel("Nome:"));
+        JLabel lblNome = new JLabel("Nome:");
+        lblNome.setBounds(20, 220, 80, 20);
+        frame.add(lblNome);
+
         tfNome = new JTextField();
-        painel.add(tfNome);
+        tfNome.setBounds(100, 220, 150, 20);
+        frame.add(tfNome);
 
-        painel.add(new JLabel("Latitude:"));
+        JLabel lblLat = new JLabel("Latitude:");
+        lblLat.setBounds(300, 190, 80, 20);
+        frame.add(lblLat);
+
         tfLat = new JTextField();
-        painel.add(tfLat);
+        tfLat.setBounds(380, 190, 100, 20);
+        frame.add(tfLat);
 
-        painel.add(new JLabel("Longitude:"));
+        JLabel lblLon = new JLabel("Longitude:");
+        lblLon.setBounds(300, 220, 80, 20);
+        frame.add(lblLon);
+
         tfLon = new JTextField();
-        painel.add(tfLon);
+        tfLon.setBounds(380, 220, 100, 20);
+        frame.add(tfLon);
 
-        JButton btCriar = new JButton("Criar");
+        JButton btCriar = new JButton("Criar Cliente");
+        btCriar.setBounds(520, 190, 140, 25);
+        frame.add(btCriar);
+
         JButton btAtualizar = new JButton("Atualizar Lista");
+        btAtualizar.setBounds(520, 220, 140, 25);
+        frame.add(btAtualizar);
 
-        painel.add(btCriar);
-        painel.add(btAtualizar);
+        labelMensagem = new JLabel("");
+        labelMensagem.setBounds(20, 260, 400, 20);
+        labelMensagem.setForeground(java.awt.Color.RED);
+        frame.add(labelMensagem);
 
-        add(painel, BorderLayout.SOUTH);
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowOpened(WindowEvent e) {
+                listagem();
+            }
+        });
 
-        atualizarTabela();
+        btAtualizar.addActionListener(e -> listagem());
 
         btCriar.addActionListener(e -> criarCliente());
-        btAtualizar.addActionListener(e -> atualizarTabela());
 
-        tabela.addMouseListener(new MouseAdapter() {
+        table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                int i = tabela.getSelectedRow();
+                int i = table.getSelectedRow();
                 if (i >= 0) {
-                    tfCpf.setText(modelo.getValueAt(i, 0).toString());
-                    tfNome.setText(modelo.getValueAt(i, 1).toString());
-                    tfLat.setText(modelo.getValueAt(i, 2).toString());
-                    tfLon.setText(modelo.getValueAt(i, 3).toString());
+                    tfCpf.setText(model.getValueAt(i, 0).toString());
+                    tfNome.setText(model.getValueAt(i, 1).toString());
+                    tfLat.setText(model.getValueAt(i, 2).toString());
+                    tfLon.setText(model.getValueAt(i, 3).toString());
                 }
             }
         });
 
-        setVisible(true);
+        frame.setVisible(true);
     }
 
-    private void atualizarTabela() {
-        modelo.setRowCount(0);
-        List<Cliente> lista = Fachada.listarClientes();
+    private void listagem() {
+        try {
+            model.setRowCount(0);
+            List<Cliente> lista = Fachada.listarClientes();
 
-        for (Cliente c : lista) {
-            modelo.addRow(new Object[]{
-                    c.getCpf(), c.getNome(),
-                    c.getLocalizacao().getLatitude(),
-                    c.getLocalizacao().getLongitude()
-            });
+            for (Cliente c : lista) {
+                model.addRow(new Object[]{
+                        c.getCpf(),
+                        c.getNome(),
+                        c.getLocalizacao().getLatitude(),
+                        c.getLocalizacao().getLongitude()
+                });
+            }
+
+            labelMensagem.setText("");
+        } catch (Exception e) {
+            labelMensagem.setText(e.getMessage());
         }
     }
 
     private void criarCliente() {
         try {
-            String cpf = tfCpf.getText();
-            String nome = tfNome.getText();
-            double lat = Double.parseDouble(tfLat.getText());
-            double lon = Double.parseDouble(tfLon.getText());
+            Fachada.criarCliente(
+                    tfCpf.getText(),
+                    tfNome.getText(),
+                    Double.parseDouble(tfLat.getText()),
+                    Double.parseDouble(tfLon.getText())
+            );
 
-            Fachada.criarCliente(cpf, nome, lat, lon);
-
-            JOptionPane.showMessageDialog(this, "Cliente criado!");
-            atualizarTabela();
-
+            labelMensagem.setText("Cliente criado com sucesso!");
+            listagem();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            labelMensagem.setText(e.getMessage());
         }
     }
 }

@@ -1,47 +1,53 @@
 package appswing;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
-public class TelaPrincipal extends JFrame {
+public class TelaPrincipal {
+
+    private JFrame frame;
 
     public TelaPrincipal() {
-        setTitle("FestHouse - Sistema");
-        setSize(800, 600);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        initialize();
+    }
 
-        JMenuBar menu = new JMenuBar();
+    private void initialize() {
+        frame = new JFrame();
+        frame.setTitle("FestHouse - Sistema");
+        frame.setSize(700, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
-        JMenu m1 = new JMenu("Cadastro");
-        JMenuItem cliente = new JMenuItem("Cliente");
-        JMenuItem evento = new JMenuItem("Evento");
-        JMenuItem convidado = new JMenuItem("Convidado");
+        JMenuBar menuBar = new JMenuBar();
+        frame.setJMenuBar(menuBar);
 
-        cliente.addActionListener(e -> new TelaCliente());
-        evento.addActionListener(e -> new TelaEvento());
-        convidado.addActionListener(e -> new TelaConvidado());
+        JMenu menuCadastro = new JMenu("Cadastros");
+        menuBar.add(menuCadastro);
 
-        m1.add(cliente);
-        m1.add(evento);
-        m1.add(convidado);
+        JMenuItem menuCliente = new JMenuItem("Cliente");
+        menuCliente.addActionListener(e -> new TelaCliente());
+        menuCadastro.add(menuCliente);
 
-        JMenu m2 = new JMenu("Consultas");
-        JMenuItem consulta = new JMenuItem("Consultar");
-        consulta.addActionListener(e -> new TelaConsulta());
-        m2.add(consulta);
+        JMenuItem menuEvento = new JMenuItem("Evento");
+        menuEvento.addActionListener(e -> new TelaEvento());
+        menuCadastro.add(menuEvento);
 
-        menu.add(m1);
-        menu.add(m2);
+        JMenuItem menuConvidado = new JMenuItem("Convidado");
+        menuConvidado.addActionListener(e -> new TelaConvidado());
+        menuCadastro.add(menuConvidado);
 
-        setJMenuBar(menu);
+        JMenu menuConsulta = new JMenu("Consultas");
+        menuBar.add(menuConsulta);
 
-        JLabel label = new JLabel("FestHouse", SwingConstants.CENTER);
-        label.setFont(new Font("Arial", Font.BOLD, 36));
-        add(label);
+        JMenuItem menuConsultaGeral = new JMenuItem("Consultar");
+        menuConsultaGeral.addActionListener(e -> new TelaConsulta());
+        menuConsulta.add(menuConsultaGeral);
 
-        setVisible(true);
+        JLabel titulo = new JLabel("FestHouse", SwingConstants.CENTER);
+        titulo.setFont(new java.awt.Font("Tahoma", java.awt.Font.BOLD, 36));
+        frame.add(titulo);
+
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
