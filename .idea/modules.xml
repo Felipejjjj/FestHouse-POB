@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FestHouse-POB.iml" filepath="$PROJECT_DIR$/FestHouse-POB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Maven.iml" filepath="$PROJECT_DIR$/Maven.iml" />
     </modules>
   </component>
 </project>
