@@ -5,78 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d395f174-e62e-4f03-8a3d-3e952c6e9bd2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FestHouse-POB.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Alterar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Apagar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Cadastrar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Consultar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appconsole/Listar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaCliente$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaCliente$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaCliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaConsulta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaConvidado$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaConvidado$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaConvidado.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaEvento$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaEvento$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaEvento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/appswing/TelaPrincipal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/modelo/Cliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/modelo/Convidado.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/modelo/Evento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/modelo/Localizacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/CRUDRepositorio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/ClienteRepositorio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/ConvidadoRepositorio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/EventoRepositorio$FiltroEventoMaisN.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/repositorio/EventoRepositorio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/requisito/Fachada.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/ControleID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/RegistroID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/FestHouse-POB/util/ip.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/db4o-8.1.249.16099-core-java5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/db4o-8.1.249.16099-cs-java5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/db4o-8.1.249.16099-cs.optional-java5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appconsole/Alterar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appconsole/Apagar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appconsole/Cadastrar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appconsole/Consultar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appconsole/Listar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appswing/TelaCliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appswing/TelaConsulta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appswing/TelaConvidado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appswing/TelaEvento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/appswing/TelaPrincipal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Convidado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Evento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Localizacao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/CRUDRepositorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/ClienteRepositorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/ConvidadoRepositorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositorio/EventoRepositorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/requisito/Fachada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/modelo/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/modelo/Convidado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/modelo/Evento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/modelo/Localizacao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/repositorio/CRUDRepositorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/util/Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/ControleID.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/ip.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/modelo/Localizacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/modelo/Localizacao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

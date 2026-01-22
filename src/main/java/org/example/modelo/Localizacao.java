@@ -22,7 +22,7 @@ public class Localizacao {
     @Column(nullable = false)
     private double longitude;
 
-    @OneToOne(mappedBy = "perfil")
+    @OneToOne(mappedBy = "localizacao")
     private Cliente cliente;
 
     //construtores
