@@ -2,14 +2,25 @@ package org.example.modelo;
 
 import java.util.ArrayList;
 
+@Table (name = "Evento20241370007")
+@Enity
 public class Evento {
 	//atributos
-	private String data;
+	@ID
 	private String nome;
+	
+	@Column(nullbale = false)
+	private String data;
+	
+	@ManyToOne
 	private Cliente cliente;
+	
+	@OneToMany(mappedBy = "evento" )
 	private ArrayList<Convidado> listaConvidados = new ArrayList<Convidado>();
 	
-	//construtor
+	//construtores
+	public Evento() {}
+	
 	public Evento(String data, String nome, Cliente cliente) {
 		this.data = data;
 		this.nome = nome;
