@@ -76,7 +76,7 @@ public class ConvidadoRepositorio extends CRUDRepositorio<Convidado> {
                 "SELECT c FROM convidado c WHERE c.nome like :n",
                 Convidado.class
         );
-        query.setParameter(":n", "%" + parteNome + "%");
+        query.setParameter("n", "%" + parteNome + "%");
 
         return query.getResultList();
     }
@@ -86,7 +86,7 @@ public class ConvidadoRepositorio extends CRUDRepositorio<Convidado> {
                 "SELECT c FROM convidado c WHERE c.evento.nome = :n",
                 Convidado.class
         );
-        query.setParameter(":n", nomeEvento);
+        query.setParameter("n", nomeEvento);
 
         return query.getResultList();
     }
