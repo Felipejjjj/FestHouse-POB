@@ -1,15 +1,17 @@
 package org.example.modelo;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 
-@Table (name = "Evento20241370007")
-@Enity
+@Table(name = "Evento20241370007")
+@Entity
 public class Evento {
 	//atributos
-	@ID
+	@Id
 	private String nome;
 	
-	@Column(nullbale = false)
+	@Column(nullable = false)
 	private String data;
 	
 	@ManyToOne

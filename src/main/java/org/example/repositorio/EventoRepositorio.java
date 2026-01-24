@@ -109,7 +109,7 @@ public class EventoRepositorio extends CRUDRepositorio<Evento> {
 	}
 	
 	@Override
-	public list<Evento> listar() {
+	public List<Evento> listar() {
 		TypedQuery<Evento> query = Util.getManager().createQuery(
 				"SELECT e from Evento e",
 				Evento.class
@@ -149,5 +149,3 @@ public class EventoRepositorio extends CRUDRepositorio<Evento> {
 	        return query.getResultList();
 	}
 }
-
- 
