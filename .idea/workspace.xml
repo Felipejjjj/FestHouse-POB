@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d395f174-e62e-4f03-8a3d-3e952c6e9bd2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Alterar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Alterar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Apagar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Apagar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Cadastrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Cadastrar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Consultar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Consultar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Listar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Listar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaConsulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaConsulta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaConvidado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaConvidado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaEvento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/modelo/Localizacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/modelo/Localizacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/requisito/Fachada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/requisito/Fachada.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

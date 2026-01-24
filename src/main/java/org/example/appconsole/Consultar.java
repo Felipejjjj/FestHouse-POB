@@ -1,9 +1,9 @@
 package org.example.appconsole;
 
-import modelo.Cliente;
-import modelo.Convidado;
-import modelo.Evento;
-import requisito.Fachada;
+import org.example.modelo.Cliente;
+import org.example.modelo.Convidado;
+import org.example.modelo.Evento;
+import org.example.requisito.Fachada;
 
 public class Consultar {
 

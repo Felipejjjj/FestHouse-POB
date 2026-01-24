@@ -3,13 +3,13 @@ package org.example.requisito;
 import java.util.List;
 import java.util.Random;
 
-import modelo.Cliente;
-import modelo.Convidado;
-import modelo.Evento;
-import modelo.Localizacao;
-import repositorio.ClienteRepositorio;
-import repositorio.ConvidadoRepositorio;
-import repositorio.EventoRepositorio;
+import org.example.modelo.Cliente;
+import org.example.modelo.Convidado;
+import org.example.modelo.Evento;
+import org.example.modelo.Localizacao;
+import org.example.repositorio.ClienteRepositorio;
+import org.example.repositorio.ConvidadoRepositorio;
+import org.example.repositorio.EventoRepositorio;
 
 public class Fachada {
     private static ClienteRepositorio clienteRep = new ClienteRepositorio();
@@ -39,6 +39,7 @@ public class Fachada {
             // Criar Localização e Cliente
             Localizacao loc = new Localizacao(lat, lon);
             Cliente novoCliente = new Cliente(cpf, nome, loc);
+            loc.setCliente(novoCliente); //ver isso depois
 
             clienteRep.criar(novoCliente);
             clienteRep.commit();

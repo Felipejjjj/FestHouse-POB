@@ -56,6 +56,14 @@ public class Localizacao {
 		this.longitude = longitude;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
     //toString
 	@Override
 	public String toString() {

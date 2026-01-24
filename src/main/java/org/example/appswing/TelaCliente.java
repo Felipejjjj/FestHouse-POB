@@ -5,8 +5,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.util.List;
 
-import modelo.Cliente;
-import requisito.Fachada;
+import org.example.modelo.Cliente;
+import org.example.requisito.Fachada;
 
 public class TelaCliente {
 

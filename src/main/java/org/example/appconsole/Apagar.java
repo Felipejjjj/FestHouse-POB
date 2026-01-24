@@ -1,6 +1,6 @@
 package org.example.appconsole;
 
-import requisito.Fachada;
+import org.example.requisito.Fachada;
 
 public class Apagar {
 

@@ -7,7 +7,7 @@ import modelo.Localizacao;
 import repositorio.Util;
 */
 
-import requisito.Fachada;
+import org.example.requisito.Fachada;
 
 public class Cadastrar {
 

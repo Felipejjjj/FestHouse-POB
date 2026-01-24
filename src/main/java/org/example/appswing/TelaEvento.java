@@ -2,8 +2,8 @@ package org.example.appswing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import requisito.Fachada;
-import modelo.Evento;
+import org.example.requisito.Fachada;
+import org.example.modelo.Evento;
 
 import java.awt.event.*;
 import java.util.List;

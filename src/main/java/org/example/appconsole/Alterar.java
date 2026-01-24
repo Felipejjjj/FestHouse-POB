@@ -1,11 +1,6 @@
 package org.example.appconsole;
-/**********************************
- * IFPB - SI
- * Persistencia de Objetos
- * Adaptado por ChatGPT
- **********************************/
 
-import requisito.Fachada;
+import org.example.requisito.Fachada;
 
 public class Alterar {
 

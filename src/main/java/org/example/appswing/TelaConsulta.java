@@ -1,11 +1,11 @@
 package org.example.appswing;
 
 import javax.swing.*;
-import requisito.Fachada;
+import org.example.requisito.Fachada;
 
-import modelo.Evento;
-import modelo.Cliente;
-import modelo.Convidado;
+import org.example.modelo.Cliente;
+import org.example.modelo.Convidado;
+import org.example.modelo.Evento;
 
 import java.awt.event.*;
 import java.util.List;
