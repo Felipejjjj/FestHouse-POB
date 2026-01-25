@@ -4,24 +4,25 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 
-    <persistence-unit name="projeto-eventos" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="hibernate-postgresql"> <!--transaction-type="RESOURCE_LOCAL">-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>org.example.modelo.Cliente</class>
         <class>org.example.modelo.Evento</class>
         <class>org.example.modelo.Convidado</class>
         <class>org.example.modelo.Localizacao</class>
-        <!--ATENÇÃO! depois configurar este arquivo com as credenciais do banco de dados-->
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/nome_do_seu_banco" />
-            <property name="jakarta.persistence.jdbc.user" value="seu_usuario" />
-            <property name="jakarta.persistence.jdbc.password" value="sua_senha" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/xxx" />
+            <property name="jakarta.persistence.jdbc.user" value="xxx" />
+            <property name="jakarta.persistence.jdbc.password" value="xxx" />
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
+            <!--coisa importante: a properties "hibernate.show_sql" e "hibernate.format_sql" fazem o Hibernate imprimir um log bem grande cada vez que ele é usado (isso deixa as telas console feias pra caramba)-->
+            <!--se quiser manter assim mesmo, só deixar elas como true-->
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.format_sql" value="false" />
             <property name="hibernate.hbm2ddl.auto" value="update" /> </properties>
     </persistence-unit>
 </persistence>

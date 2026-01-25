@@ -3,6 +3,7 @@ package org.example.modelo;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "Evento20241370007")
 @Entity
@@ -10,19 +11,19 @@ public class Evento {
 	//atributos
 	@Id
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private String data;
-	
+
 	@ManyToOne
 	private Cliente cliente;
-	
-	@OneToMany(mappedBy = "evento" )
-	private ArrayList<Convidado> listaConvidados = new ArrayList<Convidado>();
-	
+
+	@OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Convidado> listaConvidados = new ArrayList<>();
+
 	//construtores
 	public Evento() {}
-	
+
 	public Evento(String data, String nome, Cliente cliente) {
 		this.data = data;
 		this.nome = nome;
@@ -56,11 +57,11 @@ public class Evento {
 		this.cliente = cliente;
 	}
 
-	public ArrayList<Convidado> getListaConvidados() {
+	public List<Convidado> getListaConvidados() {
 		return listaConvidados;
 	}
 
-	public Convidado getConvidado(int id) throws Exception{			
+	public Convidado getConvidado(int id) throws Exception{
 		for (Convidado c : listaConvidados) {
 			if (c.getId() == id) {
 				return c;
@@ -70,7 +71,7 @@ public class Evento {
 		throw new Exception("Convidado não encontrado");
 	}
 
-	public Convidado getConvidado(String nome) throws Exception{			
+	public Convidado getConvidado(String nome) throws Exception{
 		for (Convidado c : listaConvidados) {
 			if (c.getNome().equals(nome)) {
 				return c;
@@ -82,10 +83,12 @@ public class Evento {
 
 	public void adicionarConvidado(Convidado convidado) {
 		this.listaConvidados.add(convidado);
+		convidado.setEvento(this);
 	}
-	
+
 	public void removerConvidado(Convidado convidado) throws Exception {
 		this.listaConvidados.remove(convidado);
+		convidado.setEvento(null);
 		//Util.apagarObjeto(convidado);
 		//Fachada.apagarConvidado(convidado.getId());
 	}
@@ -94,14 +97,20 @@ public class Evento {
 		this.removerConvidado(this.getConvidado(id));
 	}
 
-	//toString
+	//toString - ATENÇÃO: REMOVI A LÓGICA DELE BUSCAR A LISTA, POIS ISSO TAVA DANDO CONFLITO NO HIBERNATE
+//	@Override
+//	public String toString() {
+//		ArrayList<String> nomesConvidados = new ArrayList<String>();
+//		for(Convidado c : this.getListaConvidados()) {
+//			nomesConvidados.add(c.getNome());
+//		}
+//
+//		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente.getNome() + " Convidados: " + nomesConvidados + "]";
+//	}
+
 	@Override
 	public String toString() {
-		ArrayList<String> nomesConvidados = new ArrayList<String>();
-		for(Convidado c : this.getListaConvidados()) {
-			nomesConvidados.add(c.getNome());
-		}
-		
-		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente.getNome() + " Convidados: " + nomesConvidados + "]";
+
+		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente.getNome() + "]";
 	}
 }

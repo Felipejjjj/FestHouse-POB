@@ -61,7 +61,7 @@ public class Util {
 
 			} catch (Exception e) {
 				logger.info("problema de configuracao Util.java: " + e.getMessage());
-				throw new RuntimeException("nao conectou ao bd");
+				throw new RuntimeException("nao conectou ao bd, erro: " + e.getMessage());
 			}
 		}
 		return manager;

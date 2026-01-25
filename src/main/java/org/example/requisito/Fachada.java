@@ -39,7 +39,8 @@ public class Fachada {
             // Criar Localização e Cliente
             Localizacao loc = new Localizacao(lat, lon);
             Cliente novoCliente = new Cliente(cpf, nome, loc);
-            loc.setCliente(novoCliente); //ver isso depois
+            novoCliente.setLocalizacao(loc);
+            //loc.setCliente(novoCliente); //ver isso depois
 
             clienteRep.criar(novoCliente);
             clienteRep.commit();
@@ -119,6 +120,7 @@ public class Fachada {
         }
     }
 
+    /* REMOVI ESTA ALTERAÇÃO
     public static void alterarNomeEvento(String nomeAtual, String novoNome) throws Exception {
         eventoRep.conectar();
         eventoRep.begin();
@@ -144,6 +146,7 @@ public class Fachada {
             eventoRep.desconectar();
         }
     }
+    */
 
 
     public static List<Evento> listarEventos() {

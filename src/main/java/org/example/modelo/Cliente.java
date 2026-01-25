@@ -18,7 +18,7 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", orphanRemoval = true)
     private List<Evento> eventos = new ArrayList<Evento>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(referencedColumnName = "idLocalizacao")
     private Localizacao localizacao;
 
@@ -31,15 +31,21 @@ public class Cliente {
         this.localizacao = localizacao;
     }
 
-    //tostring
+    //tostring ATENÇÃO: REMOVI A LÓGICA DELE BUSCAR A LISTA, POIS ISSO TAVA DANDO CONFLITO NO HIBERNATE
+//    @Override
+//    public String toString() {
+//        ArrayList<String> nomesEventos = new ArrayList<String>();
+//        for(Evento e : this.getEventos()) {
+//            nomesEventos.add(e.getNome());
+//        }
+//
+//        return "CPF: " + this.cpf + " nome: " + this.nome + " Localização: " + this.localizacao + " Eventos: " + nomesEventos;
+//    }
+
     @Override
     public String toString() {
-        ArrayList<String> nomesEventos = new ArrayList<String>();
-        for(Evento e : this.getEventos()) {
-            nomesEventos.add(e.getNome());
-        }
 
-        return "CPF: " + this.cpf + " nome: " + this.nome + " Localização: " + this.localizacao + " Eventos: " + nomesEventos;
+        return "CPF: " + this.cpf + " nome: " + this.nome + " Localização: " + this.localizacao;
     }
 
     //getters e setters
@@ -86,6 +92,9 @@ public class Cliente {
 
     public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
+        if (localizacao != null) {
+            localizacao.setCliente(this);
+        }
     }
 
     //métodos gerais

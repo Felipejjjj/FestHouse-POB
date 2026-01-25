@@ -12,13 +12,13 @@ public class Consultar {
         try {
 
             // ------------------------- CLIENTES -----------------------------
-            System.out.println("\nClientes com nome contendo 'ro': ");
-            for (Cliente c : Fachada.consultarClientesPorNome("ro"))
+            System.out.println("\nClientes com nome contendo 'or': ");
+            for (Cliente c : Fachada.consultarClientesPorNome("or"))
                 System.out.println(c);
 
             // -------------------------- EVENTOS -----------------------------
-            System.out.println("\nEventos com nome contendo 'ra': ");
-            for (Evento e : Fachada.consultarEventosPorNome("ra"))
+            System.out.println("\nEventos com nome contendo 'Ra': ");
+            for (Evento e : Fachada.consultarEventosPorNome("Ra"))
                 System.out.println(e);
 
             System.out.println("\nEventos na data 10/10/2025: ");

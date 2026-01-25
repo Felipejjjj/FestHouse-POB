@@ -73,7 +73,7 @@ public class ConvidadoRepositorio extends CRUDRepositorio<Convidado> {
 
     public List<Convidado> lerPorNome(String parteNome) {
         TypedQuery<Convidado> query = Util.getManager().createQuery(
-                "SELECT c FROM convidado c WHERE c.nome like :n",
+                "SELECT c FROM Convidado c WHERE c.nome like :n",
                 Convidado.class
         );
         query.setParameter("n", "%" + parteNome + "%");
@@ -83,7 +83,7 @@ public class ConvidadoRepositorio extends CRUDRepositorio<Convidado> {
 
     public List<Convidado> lerPorEvento(String nomeEvento) {
         TypedQuery<Convidado> query = Util.getManager().createQuery(
-                "SELECT c FROM convidado c WHERE c.evento.nome = :n",
+                "SELECT c FROM Convidado c WHERE c.evento.nome = :n",
                 Convidado.class
         );
         query.setParameter("n", nomeEvento);
