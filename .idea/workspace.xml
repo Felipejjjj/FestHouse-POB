@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d395f174-e62e-4f03-8a3d-3e952c6e9bd2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Alterar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Alterar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Consultar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appconsole/Consultar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/modelo/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/modelo/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/modelo/Evento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositorio/ConvidadoRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositorio/ConvidadoRepositorio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/appswing/TelaEvento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/requisito/Fachada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/requisito/Fachada.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/util/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +34,7 @@
     "Application.Cadastrar.executor": "Run",
     "Application.Consultar.executor": "Run",
     "Application.Listar.executor": "Run",
+    "Application.TelaPrincipal.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",

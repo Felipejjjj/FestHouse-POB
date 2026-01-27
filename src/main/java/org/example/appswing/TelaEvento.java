@@ -185,7 +185,8 @@ public class TelaEvento {
 
         } catch (Exception e) {
             lblImagemEvento.setIcon(null);
-            lblImagemEvento.setText("Erro ao carregar imagem");
+            lblImagemEvento.setText("Erro ao carregar imagem: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 }

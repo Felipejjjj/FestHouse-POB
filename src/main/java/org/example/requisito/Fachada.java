@@ -345,6 +345,13 @@ public class Fachada {
         return result;
     }
 
+    public static Evento buscarEvento(String nome) {
+        eventoRep.conectar();
+        Evento eventoEncontrado = eventoRep.ler(nome);
+        eventoRep.desconectar();
+        return eventoEncontrado;
+    }
+
     public static List<Evento> consultarEventosPorData(String data) {
         eventoRep.conectar();
         List<Evento> result = eventoRep.lerPorData(data);
