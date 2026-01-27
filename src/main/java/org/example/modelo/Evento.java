@@ -20,7 +20,11 @@ public class Evento {
 
 	@OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Convidado> listaConvidados = new ArrayList<>();
-
+	
+	@Lob
+	private byte[] foto;
+	
+	
 	//construtores
 	public Evento() {}
 
@@ -56,6 +60,15 @@ public class Evento {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
+	public byte[] getFoto() {
+	    return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+	    this.foto = foto;
+	}
+
 
 	public List<Convidado> getListaConvidados() {
 		return listaConvidados;

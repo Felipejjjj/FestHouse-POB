@@ -10,6 +10,14 @@ import org.example.modelo.Localizacao;
 import org.example.repositorio.ClienteRepositorio;
 import org.example.repositorio.ConvidadoRepositorio;
 import org.example.repositorio.EventoRepositorio;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+
+import javax.imageio.ImageIO;
+
 
 public class Fachada {
     private static ClienteRepositorio clienteRep = new ClienteRepositorio();
@@ -85,6 +93,27 @@ public class Fachada {
             // Criar e salvar Evento
             // O construtor do evento já adiciona ele na lista de eventos do cliente
             Evento novoEvento = new Evento(data, nomeEvento, cliente);
+            
+            // IMAGEM DO EVENTO (somente para um evento específico)
+        
+            if (nomeEvento.equalsIgnoreCase("Visita à torre de Tokyo")) {
+
+                BufferedImage img = new BufferedImage(300, 200, BufferedImage.TYPE_INT_RGB);
+                Graphics2D g = img.createGraphics();
+
+                g.setColor(Color.WHITE);
+                g.fillRect(0, 0, 300, 200);
+
+                g.setColor(Color.BLACK);
+                g.setFont(new Font("Arial", Font.BOLD, 16));
+                g.drawString("Visita à Torre de Tokyo", 40, 100);
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(img, "png", baos);
+
+                novoEvento.setFoto(baos.toByteArray());
+            }
+            // Caso contrário, foto permanece null
 
             eventoRep.criar(novoEvento);
             // Necessário atualizar o cliente pois a lista de eventos dele mudou
