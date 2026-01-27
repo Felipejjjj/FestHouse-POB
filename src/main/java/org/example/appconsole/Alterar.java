@@ -32,16 +32,6 @@ public class Alterar {
             System.out.println(e.getMessage());
         }
 
-        // Alterar nome do evento
-        /* ALTERAÇÃO REMOVIDA
-        try {
-            Fachada.alterarNomeEvento("Rave", "Rave Internacional");
-            System.out.println("Evento 'Rave' agora se chama 'Rave Internacional'.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        */
-
         System.out.println("\nfim do programa");
     }
 }

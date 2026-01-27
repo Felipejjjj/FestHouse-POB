@@ -110,17 +110,6 @@ public class Evento {
 		this.removerConvidado(this.getConvidado(id));
 	}
 
-	//toString - ATENÇÃO: REMOVI A LÓGICA DELE BUSCAR A LISTA, POIS ISSO TAVA DANDO CONFLITO NO HIBERNATE
-//	@Override
-//	public String toString() {
-//		ArrayList<String> nomesConvidados = new ArrayList<String>();
-//		for(Convidado c : this.getListaConvidados()) {
-//			nomesConvidados.add(c.getNome());
-//		}
-//
-//		return "Evento [data=" + data + ", nome=" + nome + ", cliente=" + cliente.getNome() + " Convidados: " + nomesConvidados + "]";
-//	}
-
 	@Override
 	public String toString() {
 

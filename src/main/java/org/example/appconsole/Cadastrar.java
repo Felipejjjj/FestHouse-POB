@@ -1,11 +1,4 @@
 package org.example.appconsole;
-/*
-import modelo.Cliente;
-import modelo.Convidado;
-import modelo.Evento;
-import modelo.Localizacao;
-import repositorio.Util;
-*/
 
 import org.example.requisito.Fachada;
 

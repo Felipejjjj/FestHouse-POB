@@ -31,17 +31,6 @@ public class Cliente {
         this.localizacao = localizacao;
     }
 
-    //tostring ATENÇÃO: REMOVI A LÓGICA DELE BUSCAR A LISTA, POIS ISSO TAVA DANDO CONFLITO NO HIBERNATE
-//    @Override
-//    public String toString() {
-//        ArrayList<String> nomesEventos = new ArrayList<String>();
-//        for(Evento e : this.getEventos()) {
-//            nomesEventos.add(e.getNome());
-//        }
-//
-//        return "CPF: " + this.cpf + " nome: " + this.nome + " Localização: " + this.localizacao + " Eventos: " + nomesEventos;
-//    }
-
     @Override
     public String toString() {
 
